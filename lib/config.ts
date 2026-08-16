@@ -5,9 +5,9 @@
  */
 export const CONTACT = {
   shopName: "Bot Nhận Khách",
-  telegramHandle: "@ten_shop_cua_ban",
-  telegramUrl: "https://t.me/ten_shop_cua_ban",
-  zaloLabel: "09xx xxx xxx",
-  zaloUrl: "https://zalo.me/09xxxxxxxx",
-  email: "hello@ten-shop.vn",
+  telegramHandle: "@angelo_bui_8899",
+  telegramUrl: "https://t.me/angelo_bui_8899",
+  zaloLabel: "0395 981 620",
+  zaloUrl: "https://zalo.me/0395981620",
+  email: "angelobui02@gmail.com",
 };
