@@ -11,6 +11,7 @@ import {
   User,
 } from "lucide-react";
 import { SERVICES, type Service } from "@/lib/types";
+import { CONTACT } from "@/lib/config";
 
 type Step = "name" | "contact" | "service" | "message" | "confirm" | "done";
 
@@ -66,6 +67,7 @@ export default function DemoChat() {
   const [shopLeads, setShopLeads] = useState<CreatedLead[]>([]);
 
   const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({
@@ -73,6 +75,12 @@ export default function DemoChat() {
       behavior: "smooth",
     });
   }, [messages, step]);
+
+  useEffect(() => {
+    if (step === "name" || step === "contact" || step === "message") {
+      inputRef.current?.focus();
+    }
+  }, [step]);
 
   function botSays(text: string) {
     setMessages((m) => [...m, { role: "bot", text }]);
@@ -204,7 +212,7 @@ export default function DemoChat() {
 
         <div
           ref={scrollRef}
-          className="flex h-[420px] flex-col gap-3 overflow-y-auto p-4"
+          className="flex h-[55dvh] min-h-[320px] flex-col gap-3 overflow-y-auto p-4 sm:h-[420px]"
         >
           {messages.map((m, i) =>
             m.role === "bot" ? (
@@ -272,14 +280,25 @@ export default function DemoChat() {
                 </code>
               </p>
               <p className="mt-1 text-xs text-emerald-600">
-                Xem lead ở panel “Góc nhìn chủ shop” bên cạnh/bên dưới.
+                Xem lead ở panel “Góc nhìn chủ shop” bên cạnh/bên dưới. Khi triển
+                khai thật, shop còn nhận được tin nhắn Telegram/Zalo ngay lập tức.
               </p>
-              <button
-                onClick={restart}
-                className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-600 px-4 py-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
-              >
-                <RotateCcw size={14} /> Chạy lại demo
-              </button>
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <button
+                  onClick={restart}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-emerald-600 px-4 py-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+                >
+                  <RotateCcw size={14} /> Chạy lại demo
+                </button>
+                <a
+                  href={CONTACT.telegramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-700"
+                >
+                  Muốn bot này cho shop bạn? Nhắn Telegram
+                </a>
+              </div>
             </div>
           )}
         </div>
@@ -312,6 +331,7 @@ export default function DemoChat() {
             className="flex items-center gap-2 border-t border-slate-200 bg-white px-3 py-3"
           >
             <input
+              ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={

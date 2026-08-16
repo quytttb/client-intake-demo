@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Bot, Mail, Send, MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import { CONTACT } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Bot Nhận Khách - Không bỏ sót khách hàng",
@@ -33,17 +34,36 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <div className="text-sm text-slate-600">
                 <p className="mb-2 font-medium text-slate-900">Liên hệ</p>
                 <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <Send size={16} className="text-emerald-600" />
-                    Telegram: <span className="text-slate-400">@ten_shop_cua_ban</span>
+                  <li>
+                    <a
+                      href={CONTACT.telegramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 hover:text-emerald-600"
+                    >
+                      <Send size={16} className="text-emerald-600" />
+                      Telegram: {CONTACT.telegramHandle}
+                    </a>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <MessageCircle size={16} className="text-emerald-600" />
-                    Zalo: <span className="text-slate-400">09xx xxx xxx</span>
+                  <li>
+                    <a
+                      href={CONTACT.zaloUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 hover:text-emerald-600"
+                    >
+                      <MessageCircle size={16} className="text-emerald-600" />
+                      Zalo: {CONTACT.zaloLabel}
+                    </a>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Mail size={16} className="text-emerald-600" />
-                    Email: <span className="text-slate-400">hello@ten-shop.vn</span>
+                  <li>
+                    <a
+                      href={`mailto:${CONTACT.email}`}
+                      className="flex items-center gap-2 hover:text-emerald-600"
+                    >
+                      <Mail size={16} className="text-emerald-600" />
+                      Email: {CONTACT.email}
+                    </a>
                   </li>
                   <li>
                     <Link

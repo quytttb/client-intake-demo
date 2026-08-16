@@ -12,8 +12,11 @@ import {
   Eye,
   CheckCircle2,
   Sparkles,
+  Send,
+  MessageCircle,
 } from "lucide-react";
 import Faq from "@/components/Faq";
+import { CONTACT } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Bot Nhận Khách — Không bỏ sót khách hàng",
@@ -102,15 +105,31 @@ export default function Home() {
                 Xem demo <ArrowRight size={18} />
               </Link>
               <a
-                href="#lien-he"
-                className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-3.5 text-base font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-700 sm:w-auto"
+                href={CONTACT.telegramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-emerald-600 bg-white px-7 py-3.5 text-base font-semibold text-emerald-700 transition hover:bg-emerald-50 sm:w-auto"
               >
-                Nhận tư vấn
+                <Send size={18} /> Nhắn Telegram tư vấn
               </a>
             </div>
             <p className="mt-4 text-sm text-slate-400">
-              Demo 30 giây, không cần đăng ký.
+              Demo 30 giây, không cần đăng ký • Tư vấn miễn phí qua Zalo/Telegram.
             </p>
+            <div className="mx-auto mt-10 grid max-w-3xl grid-cols-3 divide-x divide-slate-200 rounded-2xl border border-slate-200 bg-white py-4 text-center shadow-sm">
+              <div className="px-2">
+                <p className="text-xl font-bold text-emerald-600 sm:text-2xl">24/7</p>
+                <p className="mt-1 text-xs text-slate-500">Bot trực khách cả đêm</p>
+              </div>
+              <div className="px-2">
+                <p className="text-xl font-bold text-emerald-600 sm:text-2xl">&lt;30s</p>
+                <p className="mt-1 text-xs text-slate-500">Tiếp nhận mỗi khách</p>
+              </div>
+              <div className="px-2">
+                <p className="text-xl font-bold text-emerald-600 sm:text-2xl">0</p>
+                <p className="mt-1 text-xs text-slate-500">Lead bị bỏ sót</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -287,15 +306,33 @@ export default function Home() {
             Sẵn sàng không bỏ sót khách?
           </h2>
           <p className="mt-3 text-slate-300">
-            Xem demo hoặc nhắn cho chúng tôi qua Telegram/Zalo/email ở cuối trang
-            để được tư vấn miễn phí.
+            Xem demo trước, thích thì nhắn cho chúng tôi — tư vấn miễn phí,
+            không ràng buộc.
           </p>
-          <Link
-            href="/demo"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-emerald-500 px-7 py-3 font-semibold text-white transition hover:bg-emerald-400"
-          >
-            Xem demo ngay <ArrowRight size={18} />
-          </Link>
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href="/demo"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-500 px-7 py-3 font-semibold text-white transition hover:bg-emerald-400 sm:w-auto"
+            >
+              Xem demo ngay <ArrowRight size={18} />
+            </Link>
+            <a
+              href={CONTACT.telegramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-3 font-semibold text-white transition hover:bg-white/20 sm:w-auto"
+            >
+              <Send size={18} /> Telegram
+            </a>
+            <a
+              href={CONTACT.zaloUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-3 font-semibold text-white transition hover:bg-white/20 sm:w-auto"
+            >
+              <MessageCircle size={18} /> Zalo
+            </a>
+          </div>
         </div>
       </section>
     </>
