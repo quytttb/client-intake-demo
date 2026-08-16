@@ -32,6 +32,10 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# dữ liệu lead demo (không commit dữ liệu thật)
+/data/leads.json
 
 # vercel
 .vercel
