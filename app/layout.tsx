@@ -4,6 +4,8 @@ import { Bot, Mail, Send, MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { CONTACT } from "@/lib/config";
 
+import "./globals.css";
+
 export const metadata: Metadata = {
   title: "Bot Nhận Khách - Không bỏ sót khách hàng",
   description:
