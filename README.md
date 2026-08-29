@@ -3,7 +3,7 @@
 Trang portfolio cá nhân của **Hải Quy (Angelo)** — kỹ sư tự động hóa, chuyên về
 n8n workflow, IoT ESP32, web scraping và quản trị hệ thống Linux.
 
-🌐 **Live:** [quytttb.github.io/quytttb_portfolio](https://quytttb.github.io/quytttb_portfolio)
+🌐 **Live:** [quytttb.github.io](https://quytttb.github.io)
 
 ## Nội dung
 
