@@ -298,6 +298,111 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="du-an" className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-purple-200 bg-purple-50 px-3 py-1 text-xs font-medium text-purple-700">
+              <Sparkles size={14} />
+              Dự án đã triển khai
+            </span>
+            <h2 className="mt-4 text-3xl font-bold text-slate-900">
+              Hệ thống Quản lý Đơn hàng Đa kênh
+            </h2>
+            <p className="mt-3 text-slate-600">
+              Tự động đồng bộ đơn hàng từ Shopee, Lazada, TikTok Shop &amp; Website — 
+              chuẩn hóa dữ liệu, báo cáo hàng ngày qua Telegram.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-700">
+                  <MessageSquare size={18} />
+                </span>
+                Kiến trúc hệ thống
+              </h3>
+              <div className="mt-4 space-y-3 text-sm text-slate-600">
+                {[
+                  { num: 1, title: "Webhook Trigger", desc: "Nhận tín hiệu từ cron job hoặc webhook bên ngoài để kích hoạt đồng bộ" },
+                  { num: 2, title: "Read & Sign API", desc: "Đọc dữ liệu từ 4 kênh (Shopee, Lazada, TikTok, Website), tạo chữ ký xác thực API" },
+                  { num: 3, title: "Normalize & Merge", desc: "Chuẩn hóa schema khác nhau của từng kênh về một định dạng chung, gộp vào kho dữ liệu" },
+                  { num: 4, title: "Telegram Alert & Report", desc: "Cảnh báo đơn quan trọng ngay lập tức, báo cáo tổng hợp hàng ngày lúc 8h sáng" },
+                ].map((step) => (
+                  <div key={step.num} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded bg-purple-600 text-[11px] font-bold text-white">{step.num}</span>
+                    <div>
+                      <p className="font-medium text-slate-800">{step.title}</p>
+                      <p className="text-xs">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="rounded-2xl border border-purple-200 bg-purple-50/50 p-6">
+                <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-700">
+                    <MessageSquare size={18} />
+                  </span>
+                  Công nghệ sử dụng
+                </h3>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {["n8n", "Python", "Telegram Bot API", "REST API", "HuggingFace Dataset", "Tailscale VPN", "Raspberry Pi 4", "Shopee API", "Lazada API", "TikTok Shop API"].map((tech) => (
+                    <span key={tech} className="rounded-full border border-purple-200 bg-white px-3 py-1 text-xs font-medium text-purple-700">{tech}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { value: "4", label: "Kênh bán hàng" },
+                  { value: "3", label: "Workflow n8n" },
+                  { value: "24/7", label: "Tự động hóa" },
+                  { value: "<10s", label: "Thời gian sync" },
+                ].map((stat) => (
+                  <div key={stat.label} className="rounded-2xl border border-slate-200 bg-white p-5 text-center">
+                    <p className="text-2xl font-bold text-purple-600">{stat.value}</p>
+                    <p className="mt-1 text-xs text-slate-500">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 mx-auto max-w-lg rounded-2xl border border-slate-200 bg-slate-900 p-5 shadow-lg">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-[10px] font-bold text-white">T</span>
+              <span className="text-xs text-slate-400">Telegram Bot • Báo cáo tự động 8:00 AM</span>
+            </div>
+            <pre className="text-xs text-emerald-400 font-mono leading-relaxed whitespace-pre-wrap">
+{`📊 BAO CAO DON HANG DA KENH
+Tong don: 160 | Tong doanh thu: 234.778.000d
+
+--- Theo kenh ---
+▪ Shopee:       40 don, 58.254.000d
+▪ Lazada:       40 don, 63.519.000d
+▪ TikTok Shop:  40 don, 53.955.000d
+▪ Website:      40 don, 59.050.000d
+
+--- Top 3 san pham ---
+▪ Máy làm bánh mì PETRUS 8855GS (15 sp)
+▪ Combo Dày Dép Cho Khách (13 sp)
+▪ áo croptop hot hit (13 sp)`}</pre>
+            <p className="mt-2 text-[10px] text-slate-500 italic">* Dữ liệu demo — sẵn sàng tích hợp API thật</p>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm text-slate-500">
+              🚧 Trạng thái: <span className="font-medium text-amber-600">Demo hoàn chỉnh</span> — 
+              Kiến trúc đã sẵn sàng, chờ tích hợp API thật từ các sàn.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
       <Faq />
 
       <section id="lien-he" className="bg-slate-900 py-14 text-center">

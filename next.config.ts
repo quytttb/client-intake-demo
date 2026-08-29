@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  basePath: "/client-intake-demo",
+  output: "export",
 };
 
 export default nextConfig;

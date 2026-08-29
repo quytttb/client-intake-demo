@@ -149,30 +149,28 @@ export default function DemoChat() {
     setBusy(true);
     setError(null);
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: draft.name,
-          contact: draft.contact,
-          service: draft.service,
-          message: draft.message,
-        }),
-      });
-      const json = await res.json();
-      if (!res.ok) {
-        setError(json.error ?? "Có lỗi xảy ra, vui lòng thử lại.");
-        return;
-      }
+      // Mock client-side: GitHub Pages static hosting, khong can server API
+      const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
+      const mockId = `LD-${Date.now().toString(36).toUpperCase()}-${suffix}`;
+      // Gia lap delay nhe cho cam giac that
+      await new Promise((r) => setTimeout(r, 600));
+      const mockLead: CreatedLead = {
+        id: mockId,
+        name: draft.name,
+        contact: draft.contact,
+        service: draft.service as Service,
+        message: draft.message,
+        createdAt: new Date().toISOString(),
+      };
       pushUser(`✅ Gửi yêu cầu • ${draft.service}`);
       botSays(
-        `Đã gửi thành công! Mã yêu cầu của bạn là ${json.lead.id}. Shop sẽ liên hệ lại sớm nhất. Cảm ơn bạn!`
+        `Đã gửi thành công! Mã yêu cầu của bạn là ${mockLead.id}. Shop sẽ liên hệ lại sớm nhất. Cảm ơn bạn!`
       );
-      setLead(json.lead as CreatedLead);
-      setShopLeads((ls) => [json.lead as CreatedLead, ...ls]);
+      setLead(mockLead);
+      setShopLeads((ls) => [mockLead, ...ls]);
       setStep("done");
     } catch {
-      setError("Không kết nối được máy chủ, vui lòng thử lại.");
+      setError("Co loi xay ra, vui long thu lai.");
     } finally {
       setBusy(false);
     }

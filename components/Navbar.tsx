@@ -9,6 +9,7 @@ const links = [
   { href: "/#van-de", label: "Vấn đề" },
   { href: "/#quy-trinh", label: "Quy trình" },
   { href: "/#loi-ich", label: "Lợi ích" },
+  { href: "/#du-an", label: "Dự án" },
   { href: "/#bang-gia", label: "Bảng giá" },
   { href: "/#faq", label: "FAQ" },
 ];
@@ -26,9 +27,9 @@ export default function Navbar() {
             <Bot size={20} />
           </span>
           <span>
-            Bot Nhận Khách
+            Portfolio
             <span className="block text-[11px] font-normal leading-3 text-slate-400">
-              cho shop nhỏ & freelancer
+              Automation & AI
             </span>
           </span>
         </Link>
