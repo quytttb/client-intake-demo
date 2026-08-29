@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Bot, Mail, Send, MessageCircle } from "lucide-react";
+import { Bot, Mail, Send, MessageCircle, Code2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { CONTACT } from "@/lib/config";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Bot Nhận Khách - Không bỏ sót khách hàng",
+  title: {
+    default: "Angelo — Automation & AI Engineer",
+    template: "%s | Angelo Portfolio",
+  },
   description:
-    "Bot nhận thông tin khách, phân loại nhu cầu và báo ngay cho chủ shop. Demo dịch vụ automation cho shop nhỏ & freelancer Việt Nam.",
+    "Portfolio của Hải Quy (Angelo) — kỹ sư tự động hóa, chuyên n8n workflow, IoT ESP32, web scraping và quản trị hệ thống Linux.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi" className="h-full antialiased scroll-smooth">
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-800 font-sans">
@@ -26,11 +29,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                   <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-white">
                     <Bot size={18} />
                   </span>
-                  Bot Nhận Khách
+                  Angelo — Automation & AI
                 </div>
                 <p className="mt-2 max-w-sm text-sm text-slate-500">
-                  Demo dịch vụ automation: nhận yêu cầu khách hàng, phân loại
-                  nhu cầu, lưu lead và báo ngay cho chủ shop.
+                  Portfolio kỹ sư tự động hóa: n8n workflow, IoT ESP32, web scraping, quản trị Linux.
                 </p>
               </div>
               <div className="text-sm text-slate-600">
@@ -68,18 +70,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                     </a>
                   </li>
                   <li>
-                    <Link
-                      href="/demo"
-                      className="font-medium text-emerald-600 hover:underline"
+                    <a
+                      href="https://github.com/quytttb"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 hover:text-emerald-600"
                     >
-                      Xem demo ngay →
-                    </Link>
+                      <Code2 size={16} className="text-emerald-600" />
+                      GitHub: quytttb
+                    </a>
                   </li>
                 </ul>
               </div>
             </div>
             <p className="mt-8 text-center text-xs text-slate-400">
-              © {new Date().getFullYear()} Bot Nhận Khách — bản demo minh hoạ.
+              © {new Date().getFullYear()} Angelo — Portfolio. Built with Next.js, deployed on GitHub Pages.
             </p>
           </div>
         </footer>

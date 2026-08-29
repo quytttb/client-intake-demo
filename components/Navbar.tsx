@@ -2,22 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bot, Menu, X } from "lucide-react";
+import { Bot, Menu, X, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
 const links = [
-  { href: "/#van-de", label: "Vấn đề" },
-  { href: "/#quy-trinh", label: "Quy trình" },
-  { href: "/#loi-ich", label: "Lợi ích" },
-  { href: "/#du-an", label: "Dự án" },
-  { href: "/#bang-gia", label: "Bảng giá" },
-  { href: "/#faq", label: "FAQ" },
+  { href: "/bot-nhan-khach", label: "Bot Nhận Khách", icon: Bot },
+  { href: "/quan-ly-don-hang", label: "Quản lý Đơn hàng", icon: ShoppingCart },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const onLanding = pathname === "/";
+  const isHome = pathname === "/";
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
@@ -34,22 +30,32 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} className="hidden hover:text-emerald-600 lg:inline">
-              {l.label}
-            </a>
-          ))}
-          <Link
-            href="/demo"
-            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-              onLanding
-                ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                : "border border-emerald-600 text-emerald-700 hover:bg-emerald-50"
-            }`}
-          >
-            {onLanding ? "Xem demo" : "← Về trang chủ"}
-          </Link>
+        <nav className="hidden items-center gap-1 text-sm font-medium text-slate-600 md:flex">
+          {links.map((l) => {
+            const isActive = pathname.startsWith(l.href);
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-2 transition ${
+                  isActive
+                    ? "bg-emerald-50 text-emerald-700"
+                    : "hover:bg-slate-50 hover:text-slate-900"
+                }`}
+              >
+                <l.icon size={16} />
+                {l.label}
+              </Link>
+            );
+          })}
+          {!isHome && (
+            <Link
+              href="/"
+              className="ml-2 rounded-full border border-emerald-600 px-4 py-1.5 text-sm font-semibold text-emerald-700 hover:bg-emerald-50 transition"
+            >
+              ← Home
+            </Link>
+          )}
         </nav>
 
         <button
@@ -64,22 +70,34 @@ export default function Navbar() {
       {open && (
         <nav className="border-t border-slate-100 bg-white px-4 py-3 md:hidden">
           <ul className="space-y-1 text-sm font-medium text-slate-700">
-            {links.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} onClick={() => setOpen(false)} className="block rounded-lg px-2 py-2 hover:bg-slate-50">
-                  {l.label}
-                </a>
-              </li>
-            ))}
             <li>
               <Link
-                href="/demo"
+                href="/"
                 onClick={() => setOpen(false)}
-                className="mt-2 block rounded-lg bg-emerald-600 px-2 py-2 text-center font-semibold text-white"
+                className={`block rounded-lg px-2 py-2 ${
+                  isHome ? "bg-emerald-50 text-emerald-700" : "hover:bg-slate-50"
+                }`}
               >
-                Xem demo
+                Home
               </Link>
             </li>
+            {links.map((l) => {
+              const isActive = pathname.startsWith(l.href);
+              return (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className={`flex items-center gap-2 rounded-lg px-2 py-2 ${
+                      isActive ? "bg-emerald-50 text-emerald-700" : "hover:bg-slate-50"
+                    }`}
+                  >
+                    <l.icon size={16} />
+                    {l.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       )}

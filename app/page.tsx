@@ -2,432 +2,193 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
-  MessageSquare,
-  Bell,
-  Clock,
-  Inbox,
-  NotebookPen,
-  ClipboardList,
-  Timer,
-  Eye,
-  CheckCircle2,
-  Sparkles,
+  Bot,
+  Package,
+  ShoppingCart,
+  Database,
+  BarChart3,
+  Cpu,
+  Wrench,
   Send,
   MessageCircle,
+  Mail,
+  Code2,
+  MapPin,
 } from "lucide-react";
-import Faq from "@/components/Faq";
 import { CONTACT } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Bot Nhận Khách — Không bỏ sót khách hàng",
+  title: "Angelo — Automation & AI Engineer",
+  description:
+    "Portfolio của Hải Quy (Angelo) — kỹ sư tự động hóa, chuyên n8n workflow, IoT ESP32, web scraping và quản trị hệ thống Linux.",
 };
 
-const problems = [
+const solutions = [
   {
-    icon: Clock,
-    title: "Khách nhắn ngoài giờ",
-    desc: "11 giờ đêm khách hỏi giá, bạn đang ngủ. Sáng dậy thì khách đã đi nơi khác.",
+    icon: Bot,
+    title: "Bot Nhận Khách",
+    desc: "Bot tự động nhận thông tin khách hàng, phân loại nhu cầu và báo ngay cho chủ shop qua Telegram/Zalo 24/7.",
+    tags: ["n8n", "Telegram Bot", "Zalo", "Google Sheets"],
+    href: "/bot-nhan-khach",
+    color: "emerald",
   },
   {
-    icon: Inbox,
-    title: "Bỏ sót inbox",
-    desc: "Tin nhắn dồn dập, trả lời không kịp. Khách chờ lâu là mất đơn.",
-  },
-  {
-    icon: NotebookPen,
-    title: "Ghi chép thủ công",
-    desc: "Sổ sách, file Excel rời rạc. Không nhớ ai đã hỏi gì, đã báo giá chưa.",
-  },
-];
-
-const steps = [
-  {
-    icon: MessageSquare,
-    step: "Bước 1",
-    title: "Hỏi thông tin khách",
-    desc: "Bot tự chào hỏi, xin tên và số điện thoại/Telegram/Zalo của khách với giọng thân thiện.",
-  },
-  {
-    icon: ClipboardList,
-    step: "Bước 2",
-    title: "Ghi nhận yêu cầu",
-    desc: "Khách chọn nhu cầu: tư vấn, đặt lịch hay báo giá. Bot tóm tắt lại trước khi lưu.",
-  },
-  {
-    icon: Bell,
-    step: "Bước 3",
-    title: "Báo ngay cho chủ shop",
-    desc: "Thông tin được lưu gọn gàng và gửi thông báo cho bạn qua Telegram/Zalo ngay lập tức.",
+    icon: ShoppingCart,
+    title: "Quản lý Đơn hàng Đa kênh",
+    desc: "Tự động đồng bộ đơn từ Shopee, Lazada, TikTok Shop & Website. Chuẩn hóa dữ liệu, báo cáo hàng ngày.",
+    tags: ["n8n", "Python", "REST API", "Telegram"],
+    href: "/quan-ly-don-hang",
+    color: "purple",
   },
 ];
 
-const benefits = [
-  {
-    icon: Timer,
-    title: "Tiết kiệm thời gian",
-    desc: "Không cần trực tin nhắn cả ngày. Bot nhận khách 24/7, bạn chỉ tập trung chốt đơn.",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Không bỏ sót lead",
-    desc: "Mọi khách nhắn đến đều được ghi nhận đầy đủ, kể cả nửa đêm hay ngày lễ.",
-  },
-  {
-    icon: Eye,
-    title: "Dễ theo dõi",
-    desc: "Toàn bộ yêu cầu nằm một chỗ: ai, liên hệ gì, cần gì, lúc nào — rõ ràng, tra cứu nhanh.",
-  },
+const skills = [
+  { icon: Cpu, label: "n8n Workflow Automation" },
+  { icon: Database, label: "Web Scraping & Data Pipeline" },
+  { icon: Wrench, label: "IoT ESP32 Development" },
+  { icon: BarChart3, label: "Linux System Administration" },
 ];
 
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-b from-emerald-50 via-white to-slate-50">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent" />
+        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-32">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
-              <Sparkles size={14} />
-              Automation cho shop nhỏ & freelancer Việt Nam
-            </span>
-            <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
-              Không bỏ sót khách hàng,{" "}
-              <span className="text-emerald-600">kể cả khi bạn đang bận</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-sm text-emerald-400">
+              <MapPin size={14} />
+              Việt Nam — Remote-first
+            </div>
+            <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Angelo
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-600">
-              Bot nhận thông tin khách, phân loại nhu cầu và báo ngay cho bạn.
-              Khách nhắn lúc nào cũng được tiếp nhận — bạn rảnh tay lo việc khác.
+            <p className="mt-2 text-xl text-emerald-400 font-medium">
+              Automation & AI Engineer
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <p className="mx-auto mt-4 max-w-xl text-lg text-slate-400">
+              Xây dựng giải pháp tự động hóa cho doanh nghiệp nhỏ và freelancer.
+              Từ bot nhận khách đến hệ thống quản lý đơn hàng đa kênh — tất cả
+              chạy trên hạ tầng nhẹ, chi phí thấp.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              {skills.map((s) => (
+                <span
+                  key={s.label}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs text-slate-300"
+                >
+                  <s.icon size={14} />
+                  {s.label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-slate-900">
+              Giải pháp
+            </h2>
+            <p className="mt-3 text-slate-600">
+              Mỗi giải pháp được thiết kế để giải quyết một vấn đề thực tế —
+              bấm vào để xem chi tiết và demo.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {solutions.map((s) => (
               <Link
-                href="/demo"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-600 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-emerald-600/20 transition hover:bg-emerald-700 sm:w-auto"
+                key={s.href}
+                href={s.href}
+                className="group relative flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-7 transition hover:border-slate-300 hover:shadow-lg"
               >
-                Xem demo <ArrowRight size={18} />
-              </Link>
-              <a
-                href={CONTACT.telegramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-emerald-600 bg-white px-7 py-3.5 text-base font-semibold text-emerald-700 transition hover:bg-emerald-50 sm:w-auto"
-              >
-                <Send size={18} /> Nhắn Telegram tư vấn
-              </a>
-            </div>
-            <p className="mt-4 text-sm text-slate-400">
-              Demo 30 giây, không cần đăng ký • Tư vấn miễn phí qua Zalo/Telegram.
-            </p>
-            <div className="mx-auto mt-10 grid max-w-3xl grid-cols-3 divide-x divide-slate-200 rounded-2xl border border-slate-200 bg-white py-4 text-center shadow-sm">
-              <div className="px-2">
-                <p className="text-xl font-bold text-emerald-600 sm:text-2xl">24/7</p>
-                <p className="mt-1 text-xs text-slate-500">Bot trực khách cả đêm</p>
-              </div>
-              <div className="px-2">
-                <p className="text-xl font-bold text-emerald-600 sm:text-2xl">&lt;30s</p>
-                <p className="mt-1 text-xs text-slate-500">Tiếp nhận mỗi khách</p>
-              </div>
-              <div className="px-2">
-                <p className="text-xl font-bold text-emerald-600 sm:text-2xl">0</p>
-                <p className="mt-1 text-xs text-slate-500">Lead bị bỏ sót</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="van-de" className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">
-              Bạn có đang gặp những vấn đề này?
-            </h2>
-            <p className="mt-3 text-slate-600">
-              Đây là lý do nhiều shop nhỏ mất khách mỗi ngày mà không biết.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {problems.map((p) => (
-              <div
-                key={p.title}
-                className="rounded-2xl border border-slate-200 bg-slate-50 p-6"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-rose-100 text-rose-600">
-                  <p.icon size={22} />
-                </div>
-                <h3 className="mt-4 font-semibold text-slate-900">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="quy-trinh" className="bg-slate-50 py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">
-              Bot xử lý như thế nào?
-            </h2>
-            <p className="mt-3 text-slate-600">
-              3 bước đơn giản — khách được chăm sóc, bạn được thông báo.
-            </p>
-          </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {steps.map((s) => (
-              <div
-                key={s.step}
-                className="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-              >
-                <span className="text-xs font-semibold uppercase tracking-wide text-emerald-600">
-                  {s.step}
-                </span>
-                <div className="mt-3 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
-                  <s.icon size={22} />
-                </div>
-                <h3 className="mt-4 font-semibold text-slate-900">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link
-              href="/demo"
-              className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-700"
-            >
-              Chạy thử demo ngay <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section id="loi-ich" className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">Lợi ích cho bạn</h2>
-          </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {benefits.map((b) => (
-              <div key={b.title} className="rounded-2xl bg-emerald-50 p-6">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-600 text-white">
-                  <b.icon size={22} />
-                </div>
-                <h3 className="mt-4 font-semibold text-slate-900">{b.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="bang-gia" className="bg-slate-50 py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">Bảng giá minh hoạ</h2>
-            <p className="mt-3 text-slate-600">
-              Mỗi shop một nhu cầu khác nhau — liên hệ để nhận báo giá phù hợp.
-            </p>
-          </div>
-          <div className="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
-            <div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-7">
-              <h3 className="text-lg font-semibold text-slate-900">Gói Khởi động</h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Phù hợp shop/freelancer mới bắt đầu: bot nhận khách cơ bản, lưu
-                lead, thông báo Telegram.
-              </p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                {[
-                  "Bot nhận thông tin khách 24/7",
-                  "Phân loại nhu cầu tự động",
-                  "Thông báo lead mới cho chủ shop",
-                  "Thiết lập nhanh trong vài ngày",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-emerald-600" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-6">
-                <p className="font-semibold text-emerald-700">
-                  Liên hệ để nhận báo giá phù hợp
-                </p>
-                <a
-                  href="#lien-he"
-                  className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-emerald-600 px-5 py-2.5 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50"
+                <div
+                  className={`flex h-12 w-12 items-center justify-center rounded-xl bg-${s.color}-100 text-${s.color}-700`}
                 >
-                  Nhận tư vấn
-                </a>
-              </div>
-            </div>
-            <div className="flex flex-col rounded-2xl border-2 border-emerald-600 bg-white p-7 shadow-lg shadow-emerald-600/10">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-slate-900">Gói Theo yêu cầu</h3>
-                <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">
-                  Linh hoạt
-                </span>
-              </div>
-              <p className="mt-2 text-sm text-slate-600">
-                Tích hợp theo đúng quy trình của bạn: Zalo/Telegram/Facebook,
-                Google Sheets, lịch hẹn, và hơn thế.
-              </p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                {[
-                  "Mọi tính năng gói Khởi động",
-                  "Tích hợp kênh chat của bạn",
-                  "Đồng bộ Google Sheets / CRM",
-                  "Tùy chỉnh kịch bản theo yêu cầu",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-emerald-600" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-6">
-                <p className="font-semibold text-emerald-700">
-                  Liên hệ để nhận báo giá phù hợp
-                </p>
-                <a
-                  href="#lien-he"
-                  className="mt-3 inline-flex w-full items-center justify-center rounded-full bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700"
-                >
-                  Nhận tư vấn
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="du-an" className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-purple-200 bg-purple-50 px-3 py-1 text-xs font-medium text-purple-700">
-              <Sparkles size={14} />
-              Dự án đã triển khai
-            </span>
-            <h2 className="mt-4 text-3xl font-bold text-slate-900">
-              Hệ thống Quản lý Đơn hàng Đa kênh
-            </h2>
-            <p className="mt-3 text-slate-600">
-              Tự động đồng bộ đơn hàng từ Shopee, Lazada, TikTok Shop &amp; Website — 
-              chuẩn hóa dữ liệu, báo cáo hàng ngày qua Telegram.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-8 lg:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h3 className="font-semibold text-slate-900 flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-700">
-                  <MessageSquare size={18} />
-                </span>
-                Kiến trúc hệ thống
-              </h3>
-              <div className="mt-4 space-y-3 text-sm text-slate-600">
-                {[
-                  { num: 1, title: "Webhook Trigger", desc: "Nhận tín hiệu từ cron job hoặc webhook bên ngoài để kích hoạt đồng bộ" },
-                  { num: 2, title: "Read & Sign API", desc: "Đọc dữ liệu từ 4 kênh (Shopee, Lazada, TikTok, Website), tạo chữ ký xác thực API" },
-                  { num: 3, title: "Normalize & Merge", desc: "Chuẩn hóa schema khác nhau của từng kênh về một định dạng chung, gộp vào kho dữ liệu" },
-                  { num: 4, title: "Telegram Alert & Report", desc: "Cảnh báo đơn quan trọng ngay lập tức, báo cáo tổng hợp hàng ngày lúc 8h sáng" },
-                ].map((step) => (
-                  <div key={step.num} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded bg-purple-600 text-[11px] font-bold text-white">{step.num}</span>
-                    <div>
-                      <p className="font-medium text-slate-800">{step.title}</p>
-                      <p className="text-xs">{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="rounded-2xl border border-purple-200 bg-purple-50/50 p-6">
-                <h3 className="font-semibold text-slate-900 flex items-center gap-2">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-700">
-                    <MessageSquare size={18} />
-                  </span>
-                  Công nghệ sử dụng
+                  <s.icon size={24} />
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-slate-900 group-hover:text-emerald-700">
+                  {s.title}
                 </h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {["n8n", "Python", "Telegram Bot API", "REST API", "HuggingFace Dataset", "Tailscale VPN", "Raspberry Pi 4", "Shopee API", "Lazada API", "TikTok Shop API"].map((tech) => (
-                    <span key={tech} className="rounded-full border border-purple-200 bg-white px-3 py-1 text-xs font-medium text-purple-700">{tech}</span>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                  {s.desc}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {s.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-slate-200 bg-white px-2.5 py-0.5 text-[11px] text-slate-500"
+                    >
+                      {tag}
+                    </span>
                   ))}
                 </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { value: "4", label: "Kênh bán hàng" },
-                  { value: "3", label: "Workflow n8n" },
-                  { value: "24/7", label: "Tự động hóa" },
-                  { value: "<10s", label: "Thời gian sync" },
-                ].map((stat) => (
-                  <div key={stat.label} className="rounded-2xl border border-slate-200 bg-white p-5 text-center">
-                    <p className="text-2xl font-bold text-purple-600">{stat.value}</p>
-                    <p className="mt-1 text-xs text-slate-500">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 mx-auto max-w-lg rounded-2xl border border-slate-200 bg-slate-900 p-5 shadow-lg">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 text-[10px] font-bold text-white">T</span>
-              <span className="text-xs text-slate-400">Telegram Bot • Báo cáo tự động 8:00 AM</span>
-            </div>
-            <pre className="text-xs text-emerald-400 font-mono leading-relaxed whitespace-pre-wrap">
-{`📊 BAO CAO DON HANG DA KENH
-Tong don: 160 | Tong doanh thu: 234.778.000d
-
---- Theo kenh ---
-▪ Shopee:       40 don, 58.254.000d
-▪ Lazada:       40 don, 63.519.000d
-▪ TikTok Shop:  40 don, 53.955.000d
-▪ Website:      40 don, 59.050.000d
-
---- Top 3 san pham ---
-▪ Máy làm bánh mì PETRUS 8855GS (15 sp)
-▪ Combo Dày Dép Cho Khách (13 sp)
-▪ áo croptop hot hit (13 sp)`}</pre>
-            <p className="mt-2 text-[10px] text-slate-500 italic">* Dữ liệu demo — sẵn sàng tích hợp API thật</p>
-          </div>
-
-          <div className="mt-8 text-center">
-            <p className="text-sm text-slate-500">
-              🚧 Trạng thái: <span className="font-medium text-amber-600">Demo hoàn chỉnh</span> — 
-              Kiến trúc đã sẵn sàng, chờ tích hợp API thật từ các sàn.
-            </p>
+                <div className="mt-4 flex items-center gap-1 text-sm font-medium text-emerald-600 group-hover:gap-2 transition-all">
+                  Xem chi tiết <ArrowRight size={14} />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* About */}
+      <section className="bg-slate-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+          <h2 className="text-3xl font-bold text-slate-900">Về tôi</h2>
+          <p className="mt-4 text-slate-600 leading-relaxed">
+            Tôi là <strong>Hải Quy (Angelo)</strong> — kỹ sư tự động hóa với
+            kinh nghiệm về n8n workflow, phát triển thiết bị IoT ESP32, web
+            scraping và quản trị hệ thống Linux. Tôi xây dựng các giải pháp
+            automation giúp doanh nghiệp nhỏ tiết kiệm thời gian và vận hành
+            hiệu quả hơn.
+          </p>
+          <p className="mt-3 text-slate-500 text-sm">
+            Hiện đang vận hành server Raspberry Pi 4, phát triển thiết bị IoT
+            và tìm kiếm cơ hội freelance automation.
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <a
+              href="https://github.com/quytttb"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 transition"
+            >
+              <Code2 size={16} /> GitHub
+            </a>
+            <a
+              href={CONTACT.telegramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-emerald-700 transition"
+            >
+              <Send size={16} /> Liên hệ
+            </a>
+          </div>
+        </div>
+      </section>
 
-      <Faq />
-
-      <section id="lien-he" className="bg-slate-900 py-14 text-center">
+      {/* Contact */}
+      <section className="bg-slate-900 py-14 text-center">
         <div className="mx-auto max-w-2xl px-4">
           <h2 className="text-2xl font-bold text-white sm:text-3xl">
-            Sẵn sàng không bỏ sót khách?
+            Bắt đầu một dự án?
           </h2>
           <p className="mt-3 text-slate-300">
-            Xem demo trước, thích thì nhắn cho chúng tôi — tư vấn miễn phí,
-            không ràng buộc.
+            Nhắn cho tôi qua Telegram hoặc Zalo — tư vấn miễn phí, không ràng buộc.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="/demo"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-500 px-7 py-3 font-semibold text-white transition hover:bg-emerald-400 sm:w-auto"
-            >
-              Xem demo ngay <ArrowRight size={18} />
-            </Link>
             <a
               href={CONTACT.telegramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-3 font-semibold text-white transition hover:bg-white/20 sm:w-auto"
             >
-              <Send size={18} /> Telegram
+              <Send size={18} /> Telegram: {CONTACT.telegramHandle}
             </a>
             <a
               href={CONTACT.zaloUrl}
@@ -435,7 +196,13 @@ Tong don: 160 | Tong doanh thu: 234.778.000d
               rel="noopener noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-3 font-semibold text-white transition hover:bg-white/20 sm:w-auto"
             >
-              <MessageCircle size={18} /> Zalo
+              <MessageCircle size={18} /> Zalo: {CONTACT.zaloLabel}
+            </a>
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-3 font-semibold text-white transition hover:bg-white/20 sm:w-auto"
+            >
+              <Mail size={18} /> Email
             </a>
           </div>
         </div>
